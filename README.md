@@ -13,6 +13,7 @@ Video of a lap of the track and the output of convolution and max pooling layer 
 3. Run prepare_data.py. It will go over all the images, scale them to 32x16, add augmented data and save them as numpy array in the files x.data.npy and y.data.npy
 4. Run model.py. It will train the model using the data from x.data.npy and y.data.npy
 5. Run drive.py model.json
+6. Repeat 4-5 until a model works correctly. This is due to issue #1
 
 ## Creation of the training dataset 
 
@@ -39,8 +40,9 @@ The final model consists of only 4 layers:
 1. I started playing with different models that were failing. After a lot of trial and error, I tried the NVIDIA model, documented here: https://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf
 2. It worked with my data and I discovered that it has less params than my initial models
 3. I started reducing the dimensions of the model - The NVIDIA model uses 200x66, I tried changing the input to 160x80 and modifying the convolutions accordingly. This further reduced the numbers of parameters, so I figured out that I can reduce them further
-4. A fellow student posted his model on Udacity's slack with only 400 params and I got inspired to reduce it further. There is a link on top of this document
+4. A fellow student (Mengxi Wu) posted his model on Udacity's slack with only 400 params and I got inspired to reduce it further. There is a link on top of this document
 5. I started reducing the number of kernels in the convolution and the car was still able to drive itself.
 6. I also noticed that the original model was modified and the max pooling modified to use 4x4 pool size.
-7. For the final model I added the Average Pooling in front. Because the images are not squares, I changed the max pooling to have the same aspect ratio.
+7. For the final model I added the Average Pooling in front. This effectively reduces the image size to 16x8.
+8. Also, because the images are not squares, I changed the MaxPooling to have the same aspect ratio as the input
 
