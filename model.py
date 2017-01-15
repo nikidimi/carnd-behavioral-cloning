@@ -13,12 +13,12 @@ def keras_nn(X_train, y_train, batch_size=128):
     model = Sequential()
     
     model.add(AveragePooling2D((2, 2), border_mode='valid', input_shape=(16, 32, 1)))
-    model.add(Convolution2D(1, 2, 2, subsample=(1, 1), name='conv2'))
+    model.add(Convolution2D(1, 2, 2, subsample=(1, 1)))
     model.add(ELU())
     model.add(MaxPooling2D((2, 4), border_mode='valid'))
     model.add(Dropout(0.25))
     model.add(Flatten())
-    model.add(Dense(1,  name="dense_2"))  #
+    model.add(Dense(1))  #
 
     model.summary()
     
