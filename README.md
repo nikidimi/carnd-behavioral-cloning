@@ -33,3 +33,14 @@ The final model consists of only 4 layers:
 3. **Max Pooling with 2x4 pool size** - Reduces the dimensions to 3x3x1.
 4. **Dropout** - Prevents overfitting. This model has only 10 connections at this stage, but still using dropout improves performance 
 5. **Dense layer with 1 neuron** - Used to sum up the data from the max pooling layer and output one variable - the steering angle
+
+## How did I reach this model:
+
+1. I started playing with different models that were failing. After a lot of trial and error, I tried the NVIDIA model, documented here: https://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf
+2. It worked with my data and I discovered that it has less params than my initial models
+3. I started reducing the dimensions of the model - The NVIDIA model uses 200x66, I tried changing the input to 160x80 and modifying the convolutions accordingly. This further reduced the numbers of parameters, so I figured out that I can reduce them further
+4. A fellow student posted his model on Udacity's slack with only 400 params and I got inspired to reduce it further. There is a link on top of this document
+5. I started reducing the number of kernels in the convolution and the car was still able to drive itself.
+6. I also noticed that the original model was modified and the max pooling modified to use 4x4 pool size.
+7. For the final model I added the Average Pooling in front. Because the images are not squares, I changed the max pooling to have the same aspect ratio.
+
