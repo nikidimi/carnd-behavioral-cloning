@@ -35,6 +35,12 @@ The final model consists of only 4 layers:
 4. **Dropout** - Prevents overfitting. This model has only 10 connections at this stage, but still using dropout improves performance 
 5. **Dense layer with 1 neuron** - Used to sum up the data from the max pooling layer and output one variable - the steering angle
 
+## Training
+
+1. Training is done using Adam optimizer
+2. There is an early cutoff to prevent overfitting and to make it easier to change the model - I don't have to change the epoch count
+3. 20% of the data is used for validation, testing is performed on the simulator.
+
 ## How did I reach this model:
 
 1. I started playing with different models that were failing. After a lot of trial and error, I tried the NVIDIA model, documented here: https://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf
